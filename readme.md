@@ -1,6 +1,13 @@
 # 🚀 FastAPI Starter
 
-A production-ready FastAPI boilerplate with PostgreSQL, SQLAlchemy (async), JWT authentication, and comprehensive documentation.
+> A production-ready FastAPI boilerplate with PostgreSQL, SQLAlchemy (async), JWT authentication, and comprehensive documentation. Perfect for building scalable APIs with modern Python practices.
+
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-green.svg)](https://fastapi.tiangolo.com)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-blue.svg)](https://postgresql.org)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+A modern, scalable FastAPI boilerplate that provides everything you need to build production-ready APIs. Features async database operations, JWT authentication, comprehensive logging, Docker support, and extensive documentation.
 
 ## ✨ Features
 
@@ -54,6 +61,7 @@ fastapi-starter/
 ├── main.py                # Application entry point
 ├── requirements.txt       # Python dependencies
 ├── Dockerfile            # Docker configuration
+├── docker-compose.yml    # Docker Compose setup
 ├── alembic.ini           # Alembic configuration
 └── README.md             # This file
 ```
@@ -93,7 +101,7 @@ pip install -r requirements.txt
 
 ```bash
 # Create PostgreSQL database
-createdb fastapi_starter
+createdb fastapi-starter
 
 # Run migrations
 alembic upgrade head
@@ -124,41 +132,12 @@ docker run -p 8000:8000 --env-file .env fastapi-starter
 
 ### Docker Compose (recommended)
 
-Create a `docker-compose.yml` file:
-
-```yaml
-version: '3.8'
-
-services:
-  app:
-    build: .
-    ports:
-      - "8000:8000"
-    environment:
-      - POSTGRES_SERVER=db
-    depends_on:
-      - db
-    env_file:
-      - .env
-
-  db:
-    image: postgres:15
-    environment:
-      - POSTGRES_DB=fastapi_starter
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-
-volumes:
-  postgres_data:
-```
-
-Run with:
 ```bash
+# Start all services
 docker-compose up -d
+
+# View logs
+docker-compose logs -f app
 ```
 
 ## 📚 API Documentation
@@ -207,14 +186,6 @@ curl -X POST "http://localhost:8000/api/v1/users/auth/login" \
      -d '{"email": "user@example.com"}'
 ```
 
-Response:
-```json
-{
-  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
-  "token_type": "bearer"
-}
-```
-
 #### 3. Get Current User
 
 ```bash
@@ -240,12 +211,12 @@ curl -X PUT "http://localhost:8000/api/v1/users/me" \
 | `PROJECT_NAME` | Application name | `fastapi-starter` |
 | `PROJECT_HOST` | Host to bind to | `127.0.0.1` |
 | `PROJECT_PORT` | Port to bind to | `8000` |
-| `POSTGRES_USER` | PostgreSQL username | - |
-| `POSTGRES_PASSWORD` | PostgreSQL password | - |
-| `POSTGRES_SERVER` | PostgreSQL server | - |
+| `POSTGRES_USER` | PostgreSQL username | `postgres` |
+| `POSTGRES_PASSWORD` | PostgreSQL password | `postgres` |
+| `POSTGRES_SERVER` | PostgreSQL server | `localhost` |
 | `POSTGRES_PORT` | PostgreSQL port | `5432` |
-| `POSTGRES_DB` | PostgreSQL database | - |
-| `SECRET_KEY` | JWT secret key | - |
+| `POSTGRES_DB` | PostgreSQL database | `fastapi-starter` |
+| `SECRET_KEY` | JWT secret key | `your-very-secret-and-long-key-that-is-hard-to-guess-at-least-32-characters` |
 | `ACCESS_TOKEN_EXPIRE_MINUTES` | Token expiration time | `43200` (30 days) |
 
 ## 🗄️ Database Migrations
@@ -333,3 +304,7 @@ For support and questions:
 - Create an issue in the repository
 - Check the API documentation at `/docs`
 - Review the logs for debugging information
+
+---
+
+**⭐ Star this repository if you find it helpful!**
