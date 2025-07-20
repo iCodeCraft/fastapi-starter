@@ -101,7 +101,7 @@ pip install -r requirements.txt
 
 ```bash
 # Create PostgreSQL database
-createdb fastapi-starter
+createdb fastapi_starter
 
 # Run migrations
 alembic upgrade head
@@ -215,7 +215,7 @@ curl -X PUT "http://localhost:8000/api/v1/users/me" \
 | `POSTGRES_PASSWORD` | PostgreSQL password | `postgres` |
 | `POSTGRES_SERVER` | PostgreSQL server | `localhost` |
 | `POSTGRES_PORT` | PostgreSQL port | `5432` |
-| `POSTGRES_DB` | PostgreSQL database | `fastapi-starter` |
+| `POSTGRES_DB` | PostgreSQL database | `fastapi_starter` |
 | `SECRET_KEY` | JWT secret key | `your-very-secret-and-long-key-that-is-hard-to-guess-at-least-32-characters` |
 | `ACCESS_TOKEN_EXPIRE_MINUTES` | Token expiration time | `43200` (30 days) |
 
