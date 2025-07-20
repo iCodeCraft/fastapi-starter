@@ -1,0 +1,15 @@
+# Project settings
+PROJECT_NAME=fastapi-starter
+PROJECT_HOST=0.0.0.0
+PROJECT_PORT=8000
+
+# Database settings
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_SERVER=localhost
+POSTGRES_PORT=5432
+POSTGRES_DB=fastapi_starter
+
+# Security settings
+SECRET_KEY=your-very-secret-and-long-key-that-is-hard-to-guess-at-least-32-characters
+ACCESS_TOKEN_EXPIRE_MINUTES=43200  # 30 days in minutes
